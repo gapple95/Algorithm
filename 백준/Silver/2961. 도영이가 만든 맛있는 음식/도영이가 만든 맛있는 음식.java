@@ -88,8 +88,11 @@ public class Main {
 					tmp_sson += sson[i];
 				}
 			}
-			min =  Math.min(min,Math.abs(tmp_sin - tmp_sson));
+			int tmp = Math.abs(tmp_sin - tmp_sson);
 
+			if (tmp < min) {
+				min = tmp;
+			}
 			return;
 		} 
 			
