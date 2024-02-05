@@ -5,48 +5,51 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Main {
-	static int N; // 탑의 개수
-	static int[] recep; // 레이저를 송신하는 탑 번호
+
+	static int N;
+	static int[] arr;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine()); // 탑의 개수 입력받음
-		
-		Stack<Integer> towers = new Stack<>(); // 탑의 높이를 저장하는 Stack
-		Stack<Integer> idxs = new Stack<>(); // 탑의 인덱스를 저장하는 Stack
-		recep = new int[N]; // 탑 개수만큼 배열 만든다.
+
+		N = Integer.parseInt(br.readLine());
+
+		arr = new int[N];
+
+		Stack<Integer> s1 = new Stack<>(); // 탑을 담는 스택
+		Stack<Integer> s2 = new Stack<>(); // 탑의 인덱스를 담는 스택
+
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		int nextNum = 0;
-		for(int i = 0 ; i < N ; i++) {
-			nextNum = Integer.parseInt(st.nextToken()); // 탑의 높이 입력받음
-			for(int j = towers.size() ; j > 0 ; j--) { // 탑 높이 스택만큼 역으로 탐색하면서
-				if(towers.peek() > nextNum) break; // 자신보다 높은 높이의 탑이 있으면 반복문 종료
-				
-				// 높이가 현재 받은 탑의 높이보다 낮다면 탑과 인덱스 Stack에서 하나씩 뺀다(해당 탑의 신호를 수신하지 못하기 때문에)
-				// 이렇게 빼주기 때문에 탑 높이 스택만큼 탐색해도 시간초과가 나오지 않는다.
-				towers.pop(); 
-				idxs.pop(); 
+		int get_num;
+		for (int i = 0; i < N; i++) {
+			get_num = Integer.parseInt(st.nextToken());
+			
+			// 스택 내부를 자신보다 큰 값이 있는지 확인하고 나보다 작으면 제거
+			for(int j=s1.size(); j>0; j--) {
+				if(s1.peek() > get_num)
+					break;
+				s1.pop();
+				s2.pop();
 			}
 			
-			// Stack에 아무것도 없으면 수신할 탑이 없는 것이므로, 0을 넣는다.
-			if(towers.isEmpty()) {
-				recep[i] = 0;
-			} 
-			// 수신할 탑이 있으면, 해당 탑의 인덱스를 넣어준다.
-			else {
-				recep[i] = idxs.peek();
+			// 모두 제거 후 스택이 다 비어진다면? 그게 가장 큰것이니 인덱스는 0 
+			// 안비어져 있다면 가장 큰것이 안쪽에 있다는 의미 => 안쪽의 인덱스를 정답 배열에 넣기
+			if (s1.isEmpty()) {
+				arr[i] = 0;
+			} else {
+				arr[i] = s2.peek();
 			}
-			
-			// 아까 받은 탑의 높이와 인덱스를 각각 stack에 넣어준다.
-			towers.add(nextNum);
-			idxs.add(i+1); // i는 0부터 시작하지만 탑 번호는 1부터 시작하기 때문에 1을 더한다.
+
+			// 모든 계산후, 스택에 값을 넣고, 다음 인덱스도 넣는다.
+			s1.push(get_num);
+			s2.push(i+1);
 		}
-		
-		// 수신 인덱스가 담긴 배열을 출력한다.
-		for(int i = 0 ; i <N ; i++) {
-			if(i == N-1)System.out.print(recep[i]);
-			else System.out.print(recep[i]+" ");
+
+		for (int i = 0; i < N; i++) {
+            if(i==N-1)System.out.print(arr[i]);
+            else System.out.print(arr[i] + " ");
 		}
-		
+
+
 	}
 
 }
