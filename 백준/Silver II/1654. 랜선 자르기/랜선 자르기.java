@@ -7,8 +7,8 @@ import java.util.StringTokenizer;
 /*
  * 백준 1654 랜선 자르기
  * 
- * 메모리
- * 시간
+ * 메모리 15612
+ * 시간 148
  * 
  * 캠프 때 쓸 N개의 랜선을 만들어야하는데 너무 바쁘다.
  * 자체적으로 K개의 랜선을 가지고 있다. 그러나 K개의 랜선은 길이가 제각각이다.
@@ -68,7 +68,6 @@ public class Main {
 		long end = arr[arr.length-1];
 		long mid = 0;
 		long _k = 0;
-		long maxLength = 0;
 		
 		while(start <= end) {
 			mid = (start + end) / 2;
@@ -77,7 +76,7 @@ public class Main {
 			_k = cal(mid);
 			
 			if(_k>=findNum) {
-				maxLength = (int)mid;
+				max = mid;
 				start = mid+1;
 			}
 			//N개 이상의 랜선을 만들 수 없는 경우
@@ -87,7 +86,7 @@ public class Main {
 			}
 		}
 		
-		return maxLength;
+		return max;
 	}
 	
 	public static long cal(long num) {
