@@ -45,17 +45,17 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int N = s.nextInt();
-		int[] road = new int[N-1];
+		long[] road = new long[N-1];
 		for (int i = 0; i < road.length; i++) {
 			road[i] = s.nextInt();
 		}
-		int[] gas = new int[N];
+		long[] gas = new long[N];
 		for (int i = 0; i < gas.length; i++) {
 			gas[i] = s.nextInt();
 		}
 		
-		int money = 0;
-		int idx = 0;
+		long money = 0;
+		long idx = 0;
 		while(idx<N-1) {
 			// 14점따리
 //			if(gas[idx] >= gas[idx+1]) {
@@ -66,10 +66,10 @@ public class Main {
 //			}
 //			idx++;
 			
-			int min_idx=idx;
-			int min_gas=gas[idx];
+			long min_idx=idx;
+			long min_gas=gas[(int)idx];
 			// 다음 도시들의 주유소의 값들을 다 비교
-			for(int i=idx; i<N-1; i++) {
+			for(int i=(int)idx; i<N-1; i++) {
 				if(min_gas <= gas[i]) {
 					idx = i + 1;
 					money += min_gas * road[i];
