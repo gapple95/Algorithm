@@ -54,20 +54,33 @@ public class Main {
 			gas[i] = s.nextInt();
 		}
 		
-		// 처음에는 무조건 가스를 충전해야한다.
-		int money = gas[0] * road[0];
-		//도시를 선택하는 인덱스 0번도시는 이미 선택이 되어 떠났다!
-		int idx = 1;
+		int money = 0;
+		int idx = 0;
 		while(idx<N-1) {
-			if(gas[idx] >= gas[idx+1]) {
-				money += gas[idx] * road[idx];
-			} else { // 지금 도시의 가스가 더 쌀때
-				money += gas[idx] * (road[idx] + road[idx+1]);
-				idx++;
+			// 14점따리
+//			if(gas[idx] >= gas[idx+1]) {
+//				money += gas[idx] * road[idx];
+//			} else { // 지금 도시의 가스가 더 쌀때
+//				money += gas[idx] * (road[idx] + road[idx+1]);
+//				idx++;
+//			}
+//			idx++;
+			
+			int min_idx=idx;
+			int min_gas=gas[idx];
+			// 다음 도시들의 주유소의 값들을 다 비교
+			for(int i=idx; i<N-1; i++) {
+				if(min_gas <= gas[i]) {
+					idx = i + 1;
+					money += min_gas * road[i];
+				} else {
+					idx = i;
+					break;
+				}
 			}
-			idx++;
+			
 		}
-		
+//		System.out.println(idx);
 		System.out.println(money);
 	}
 
