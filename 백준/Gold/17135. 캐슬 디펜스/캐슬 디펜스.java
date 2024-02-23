@@ -12,8 +12,8 @@ import java.util.StringTokenizer;
 /*
  * 백준 17135 캐슬 디펜스
  * 
- * 메모리 
- * 시간 
+ * 메모리 33196
+ * 시간 176
  * 
  * 캐슬 디펜스는 성을 향해 몰려오는 적을 잡는 턴 방식의 게임이다.
  * 게임이 진행되는 곳은 크기가 NxM인 격자판으로 나타낼수있다.
@@ -107,7 +107,7 @@ public class Main {
 			}
 //			System.out.println(Arrays.toString(picked));
 			int cnt = 0;
-			for(int i=N;i>=0; i--) {
+			for(int i=N;i>=1; i--) {
 //				System.out.println(i);
 				bfs(i, picked[0]);
 				bfs(i, picked[1]);
