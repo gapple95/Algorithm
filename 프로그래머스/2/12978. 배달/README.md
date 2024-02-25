@@ -1,6 +1,6 @@
 # [level 2] 배달 - 12978 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12978?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12978) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 02월 22일 14:02:10
+2024년 02월 25일 22:42:20
 
 ### 문제 설명
 
