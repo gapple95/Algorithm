@@ -33,11 +33,13 @@ public class Main {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		int N = Integer.parseInt(br.readLine());
 		if(N%2==0)
-			System.out.println("CY");
+			sb.append("CY");
 		else
-			System.out.println("SK");
+			sb.append("SK");
+		System.out.println(sb);
 	}
 
 }
