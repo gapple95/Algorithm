@@ -49,11 +49,11 @@ public class Solution {
 
 			for (int k = 0; k < N; k++) {
 				for (int i = 0; i < N; i++) {
-					if (i == k)
-						continue;
+//					if (i == k)
+//						continue;
 					for (int j = 0; j < N; j++) {
-						if (j == k || j == i)
-							continue;
+//						if (j == k || j == i)
+//							continue;
 
 						map[i][j] = Math.min(map[i][k] + map[k][j], map[i][j]);
 					}
