@@ -17,10 +17,19 @@ public class Main {
 		
 		long sum = 0;
 		for (int i = 0; i < N; i++) {
-			sum += ((str.charAt(i) - 'a' + 1) * (long)Math.pow(r, i)) % M; 
+			sum += ((str.charAt(i) - 'a' + 1) * pow(r, i)) % M; 
+            sum %= M;
 		}
 		sb.append(sum);
 		System.out.println(sb);
 	}
 
+	public static long pow(int r, int i) {
+		long result = 1;
+		for (int j = 0; j < i; j++) {
+			result %= M;
+			result *= r;
+		}
+		return result;
+	}
 }
