@@ -36,10 +36,10 @@ public class Main {
             return;
         }
 
-        dfs(up(deepCopy(arr)), depth + 1);
-        dfs(down(deepCopy(arr)), depth + 1);
-        dfs(left(deepCopy(arr)), depth + 1);
-        dfs(right(deepCopy(arr)), depth + 1);
+        dfs(up(arr), depth + 1);
+        dfs(down(arr), depth + 1);
+        dfs(left(arr), depth + 1);
+        dfs(right(arr), depth + 1);
     }
 
     public static int[][] deepCopy(int[][] arr) {
