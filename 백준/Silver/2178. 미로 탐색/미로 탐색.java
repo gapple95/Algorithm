@@ -44,6 +44,7 @@ public class Main {
 			// 끝에 도착했을 경우
 			if(cur[0] == N - 1 && cur[1] == M - 1) {
 				min = Math.min(min, cur[2]);
+				break;
 			}
 			
 			for (int d = 0; d < 4; d++) {
