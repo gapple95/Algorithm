@@ -17,14 +17,11 @@ public class Main {
 		
 		Deque<int[]> stack = new ArrayDeque<>();
 		
-		int check, score, time;
+		int score, time;
 		int sum = 0;
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
-			
-			check = Integer.parseInt(st.nextToken());
-			
-			if(check == 1) {
+			if(st.nextToken().equals("1")) {
 				score = Integer.parseInt(st.nextToken());
 				time = Integer.parseInt(st.nextToken());
 				
@@ -32,15 +29,8 @@ public class Main {
 			}
 			
 			if(!stack.isEmpty()) {
-				int[] cur = stack.pop();
-				// 시간이 다 되었으면 점수 획득
-				if(cur[1] - 1 == 0) {
-					sum += cur[0];
-				}
-				// 시간이 아직 안되었으면 다시 스택에 넣기
-				else {
-					stack.push(new int[] {cur[0], cur[1] - 1});
-				}
+				if(--stack.peek()[1] == 0)
+					sum += stack.pop()[0];
 			}
 		}
 		
