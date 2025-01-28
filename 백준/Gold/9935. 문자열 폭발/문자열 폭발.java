@@ -44,8 +44,8 @@ public class Main {
 		if(answer.isEmpty())
 			sb.append("FRULA");
 		else {
-			for (int i = 0; i < answer.size(); i++) {
-				sb.append(answer.get(i));
+			for (char chr : answer) {
+				sb.append(chr);
 			}
 		}
 
