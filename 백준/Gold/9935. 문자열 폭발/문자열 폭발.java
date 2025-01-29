@@ -29,8 +29,10 @@ public class Main {
 			// 끝부터 확인해보기
 			boolean flag = true;
 			for (int j = 0; j < tnt.length(); j++) {
-				if(answer.get(answer.size() - j - 1) != tnt.charAt(tnt.length() - j - 1))
+				if(answer.get(answer.size() - j - 1) != tnt.charAt(tnt.length() - j - 1)) {
 					flag = false;
+					break;
+				}
 			}
 
 			if(flag) {
