@@ -71,11 +71,8 @@ public class Main {
             for (int j = 1; j <= N; j++) {
                 while (!map[i][j].isEmpty()) { // O(1) 연산
                     Fireball fb = map[i][j].poll();
-                    int nx = (i + dy[fb.d] * fb.s % N + N) % N;
-                    int ny = (j + dx[fb.d] * fb.s % N + N) % N;
-
-                    if (nx == 0) nx = N;
-                    if (ny == 0) ny = N;
+                    int nx = ((i - 1 + dy[fb.d] * fb.s) % N + N) % N + 1;
+                    int ny = ((j - 1 + dx[fb.d] * fb.s) % N + N) % N + 1;
 
                     movingFireballs.add(new Fireball(fb.m, fb.s, fb.d, nx, ny));
                 }
