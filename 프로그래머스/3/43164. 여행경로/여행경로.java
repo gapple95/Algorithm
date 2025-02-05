@@ -9,7 +9,7 @@ class Solution {
         size = tickets.length;
         visited = new boolean[size];
 
-        // 티켓을 사전순 정렬 (출발지 → 도착지 기준)
+        // 티켓을 사전순 정렬 (출발지 - 도착지 기준)
         Arrays.sort(tickets, (o1, o2) -> {
             if (o1[0].equals(o2[0])) {
                 return o1[1].compareTo(o2[1]); // 같은 출발지일 경우 도착지 오름차순 정렬
