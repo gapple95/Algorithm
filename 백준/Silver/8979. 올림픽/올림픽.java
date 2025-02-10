@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 	
-	static class Nation implements Comparable<Nation>{
+	static class Nation {
 		int num, gold, silver, cooper, rank;
 
 		public Nation(int num, int gold, int silver, int cooper) {
@@ -19,12 +19,11 @@ public class Main {
 			this.cooper = cooper;
 		}
 
-		@Override
-		public int compareTo(Nation o) {
-			if(o.gold == gold && o.silver == silver && o.cooper == silver)
-				return 1;
+		public boolean equals(Nation o) {
+			if(o.gold == gold && o.silver == silver && o.cooper == cooper)
+				return true;
 			else
-				return -1;
+				return false;
 		}
 	}
 
@@ -70,12 +69,16 @@ public class Main {
 			}
 		});
 		
-		list.get(0).rank = rank++;
+		list.get(0).rank = rank;
+		int cnt = 1;
 		for (int i = 1; i < N; i++) {
 			if(list.get(i).equals(list.get(i-1))) {
 				list.get(i).rank = rank;
+				cnt++;
 			} else {
-				list.get(i).rank = rank++;
+				list.get(i).rank = rank + cnt;
+				rank += cnt;
+				cnt = 1;
 			}
 		}
 		
