@@ -37,8 +37,7 @@ public class Main {
 		Set<String> person = new HashSet<>();
 		
 		for (int i = 0; i < N; i++) {
-			st = new StringTokenizer(br.readLine());
-			person.add(st.nextToken());
+			person.add(br.readLine());
 		}
 		
 		sb.append(person.size() / game_type);
